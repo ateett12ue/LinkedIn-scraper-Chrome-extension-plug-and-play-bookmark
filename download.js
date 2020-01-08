@@ -33,9 +33,12 @@ javascript: (function() {
       experianceProfile.designation = x[i]
         .querySelector("div.display-flex")
         .querySelector("h3").innerText;
-      experianceProfile.company = x[i]
-        .querySelector("div.display-flex")
-        .querySelector("p.t-normal").innerText;
+      experianceProfile.company =
+        x[i].querySelector("div.display-flex").querySelector("p.t-normal") !=
+        null
+          ? x[i].querySelector("div.display-flex").querySelector("p.t-normal")
+              .innerText
+          : "";
       experianceProfile.experiance =
         x[i]
           .querySelector("div.display-flex")
@@ -78,7 +81,9 @@ javascript: (function() {
           : "";
 
       educationProfile.passout_year = y[i].querySelectorAll("time").length
-        ? y[i].querySelectorAll("time")[1].innerText
+        ? y[i].querySelectorAll("time").length == 2
+          ? y[i].querySelectorAll("time")[1].innerText
+          : y[i].querySelectorAll("time")[0].innerText
         : "";
 
       profile.education.push(educationProfile);
