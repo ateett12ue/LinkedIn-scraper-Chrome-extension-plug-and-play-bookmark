@@ -44,12 +44,16 @@ javascript: (function() {
               .querySelector("div.display-flex")
               .querySelector("span.pv-entity__bullet-item-v2").innerText
           : "";
-      experianceProfile.area = x[i]
-        .querySelector("h4.pv-entity__location")
-        .getElementsByTagName("span")[1].innerText;
-      experianceProfile.details = x[i].querySelector(
-        "p.pv-entity__description"
-      ).innerText;
+      experianceProfile.area =
+        x[i].querySelector("h4.pv-entity__location") != null
+          ? x[i]
+              .querySelector("h4.pv-entity__location")
+              .getElementsByTagName("span")[1].innerText
+          : "";
+      experianceProfile.details =
+        x[i].querySelector("p.pv-entity__description") != null
+          ? x[i].querySelector("p.pv-entity__description").innerText
+          : "";
       profile.experiance.push(experianceProfile);
     }
   }
@@ -68,9 +72,10 @@ javascript: (function() {
         "h3.pv-entity__school-name"
       ).innerText;
 
-      educationProfile.degree = y[i].querySelector(
-        "span.pv-entity__comma-item"
-      ).innerText;
+      educationProfile.degree =
+        y[i].querySelector("span.pv-entity__comma-item") != null
+          ? y[i].querySelector("span.pv-entity__comma-item").innerText
+          : "";
 
       educationProfile.passout_year = y[i].querySelectorAll("time").length
         ? y[i].querySelectorAll("time")[1].innerText
@@ -81,4 +86,4 @@ javascript: (function() {
   }
 
   dataDownload(JSON.stringify(profile, null, 4), "data.json", "text/plain");
-});
+})();
