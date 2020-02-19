@@ -14,7 +14,7 @@ chrome.contextMenus.onClicked.addListener(contextMenuHandler);
 function contextMenuHandler(info, tab) {
   if (info.menuItemId === contextMenus.createCounterString) {
     chrome.tabs.executeScript({
-      file: "craftDownload.js"
+      file: "download.js"
     });
   }
 }
